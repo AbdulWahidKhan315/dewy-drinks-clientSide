@@ -1,16 +1,54 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+    const {createUserInFirebase} = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+
+
+
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name,photo,email,password)
+        createUserInFirebase(email,password)
+        .then(result => {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Register Successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
+            updateProfile(result.user, {
+                displayName: name,
+                photoURL: photo
+            })
+            .then()
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: `${error.message}`,
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
+            })
+            navigate('/');
+        })
+        .catch(error => {
+            Swal.fire({
+                title: 'Error!',
+                text: `${error.message}`,
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+        })
     }
     return (
         <div>
