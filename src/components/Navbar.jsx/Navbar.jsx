@@ -4,9 +4,9 @@ const Navbar = () => {
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/login">Add Product</NavLink></li>
-        <li><NavLink to="/">My Cart</NavLink></li>
-        <li><NavLink to="/TopVenues">Login</NavLink></li>
+        <li><NavLink to="/addProduct">Add Product</NavLink></li>
+        <li><NavLink to="/myCart">My Cart</NavLink></li>
+        <li><NavLink to="/login">Login</NavLink></li>
         <li><NavLink to="/register">Register</NavLink></li>
     </>
     return (
