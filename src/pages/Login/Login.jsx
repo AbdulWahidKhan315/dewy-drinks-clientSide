@@ -1,17 +1,37 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const { signIn } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
-        const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name,photo,email,password)
+
+        signIn(email, password)
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Login Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(() => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Invalid Email and password! Check your email and password',
+                    icon: 'error',
+                    confirmButtonText: 'Cancel'
+                })
+            })
     }
     return (
         <div>
@@ -25,18 +45,6 @@ const Login = () => {
                             </div>
                             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-orange-400">
                                 <form className="card-body" onSubmit={handleLogin}>
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Name</span>
-                                        </label>
-                                        <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
-                                    </div>
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Photo URL</span>
-                                        </label>
-                                        <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered" required />
-                                    </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text">Email</span>
