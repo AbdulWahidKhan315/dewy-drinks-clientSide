@@ -5,9 +5,31 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+
+    
+    const googleLogin = () => {
+        signInWithGoogle()
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Login Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: `${error.message}`,
+                    icon: 'error',
+                    confirmButtonText: 'Cancel'
+                })
+            })
+    }
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -42,6 +64,8 @@ const Login = () => {
                             <div className="text-center lg:text-left">
                                 <h1 className="text-5xl font-bold text-orange-400">Login now!</h1>
                                 <p className="py-6 font-semibold">Please login in our website. By completing the registration you will get the premium service from our website.</p>
+                                <p className="text-2xl font-bold mb-3 text-orange-400">Login With google!</p>
+                                <button onClick={googleLogin} className="btn bg-orange-600 text-white">Google</button>
                             </div>
                             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-orange-400">
                                 <form className="card-body" onSubmit={handleLogin}>
