@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <div>
-            <footer className="footer px-10 py-4 border-t bg-gradient-to-r from-orange-400 to-amber-200  text-balck font-bold border-orange-800 mt-7">
+            <footer className="footer px-10 py-4 border-t bg-gradient-to-r from-orange-400 to-amber-200  text-balck font-bold border-orange-800">
                 <aside className="items-center grid-flow-col">
                     <p>DeWy-Drinks Industries Ltd. <br />Providing reliable tech since 1992</p>
                 </aside>

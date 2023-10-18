@@ -31,7 +31,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl bg-orange-600 hover:bg-orange-700 text-white">DeWe-Drinks</a>
+                <a className="btn btn-sm lg:btn-md normal-case text-base lg:text-xl bg-orange-600 hover:bg-orange-700 text-white">DeWe-Drinks</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -48,7 +48,7 @@ const Navbar = () => {
                     user ? <img className="w-14 h-14 rounded-full mr-1" src={user.photoURL} alt="" /> : <img src="" alt="" />
                 }
                 {
-                    user ? <button className="btn hover:bg-orange-600 bg-orange-500 border-none font-bold text-white" onClick={handleSignOut}>Sign Out</button> :
+                    user ? <button className="btn btn-sm lg:btn-md hover:bg-orange-600 bg-orange-500 border-none font-bold text-white" onClick={handleSignOut}>Sign Out</button> :
                         <Link to="/login">
                             <button className="btn bg-orange-600 hover:bg-orange-700  border-none font-bold text-white">Login</button>
                         </Link>
