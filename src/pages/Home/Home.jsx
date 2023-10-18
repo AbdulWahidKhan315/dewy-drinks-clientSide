@@ -6,8 +6,8 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className="bg-gradient-to-r from-orange-100 to-amber-500 rounded-lg">
-                <div className="container mx-auto lg:mt-20">
+            <div>
+                <div className="container mx-auto mt-72 lg:mt-20">
                     <h3 className="text-4xl font-bold underline underline-offset-8 my-12 italic text-orange-600">Explore Our Brands</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                         {
