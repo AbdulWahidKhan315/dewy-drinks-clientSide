@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Banner from "../../components/Banner/Banner";
+import CompanyJobs from "../../components/CompanyJobs/CompanyJobs";
 
 const Home = () => {
     const brandData = useLoaderData();
@@ -24,6 +25,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <CompanyJobs></CompanyJobs>
         </div>
     );
 };
