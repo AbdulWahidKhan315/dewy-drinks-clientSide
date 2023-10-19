@@ -12,7 +12,6 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [email,setEmail] = useState('')
 
 
     const createUserInFirebase = (email, password) => {
@@ -35,13 +34,13 @@ const AuthProvider = ({ children }) => {
     }
 
     const signInWithGoogle = () => {
+        setLoading(true)
         return signInWithPopup(auth, googleProvider);
     }
 
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setEmail(currentUser.email);
             setLoading(false);
             setUser(currentUser);
         });
@@ -63,7 +62,6 @@ const AuthProvider = ({ children }) => {
         logOut,
         signIn,
         signInWithGoogle,
-        email,
     }
     return (
         <AuthContext.Provider value={authInfo}>

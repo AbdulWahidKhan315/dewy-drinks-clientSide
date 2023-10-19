@@ -22,7 +22,9 @@ const BrandDetails = () => {
                             <Link to={`/productDetails/${detail.productName}`}>
                                 <button className="btn rounded-full bg-orange-700 border-none hover:bg-orange-900 text-white font-bold">Details</button>
                             </Link>
-                            <button className="btn rounded-full bg-orange-700 border-none hover:bg-orange-900 text-white font-bold">Update</button>
+                            <Link to={`/updateProduct/${detail._id}`}>
+                                <button className="btn rounded-full bg-orange-700 border-none hover:bg-orange-900 text-white font-bold">Update</button>
+                            </Link>
                         </div>
                     </div>
                 </div>) : <h1 className="text-5xl col-span-2 text-center font-extrabold italic">There is no Product available</h1>
