@@ -1,11 +1,35 @@
 import { useLoaderData } from "react-router-dom";
 import { FaDollarSign } from "react-icons/fa";
+import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const ProductDetails = () => {
     const productDetails = useLoaderData();
-    const { productName,brandName,type, price, image, Ingredients, availableSize, avialableFlavors, bigDescription } = productDetails;
+    const {user}=useContext(AuthContext)
+    const email =  user.email
+    const { productName,brandName,type, price, rating, image, Ingredients, availableSize, avialableFlavors, bigDescription } = productDetails;
     const handleAddToCart = (e) =>{
         e.preventDefault();
+        const cart = {productName,brandName,type,price,image,Ingredients,rating,email}
+        fetch('http://localhost:5000/addToCart',{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(cart)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'product added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
+            }
+        })
     }
     return (
         <div className="bg-orange-100">
