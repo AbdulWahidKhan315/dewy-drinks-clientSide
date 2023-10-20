@@ -13,9 +13,13 @@ import './swiper.css';
 
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { useEffect } from "react";
 
 const BrandDetails = () => {
     const brandDetaile = useLoaderData();
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     // const [productName,brandName,type,price,shortDescription,rating,image]=brandDetaile;
     return (
         <div>
