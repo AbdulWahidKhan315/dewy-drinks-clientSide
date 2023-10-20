@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { FaDollarSign, FaStar } from 'react-icons/fa';
+import { FaDollarSign } from 'react-icons/fa';
+import { Rate } from "antd"
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -70,7 +71,7 @@ const BrandDetails = () => {
                             <h3 className="text-xl">Type: {detail.type}</h3>
                             <div className="flex justify-evenly bg-gray-800 rounded-lg p-2">
                                 <h4 className=" flex items-center">Price: {detail.price} <FaDollarSign></FaDollarSign></h4>
-                                <h4 className="flex items-center gap-1">rating: {detail.rating} <FaStar className="text-orange-400"></FaStar></h4>
+                                <h4 className="flex items-center gap-1">rating: <Rate disabled defaultValue={detail.rating}></Rate></h4>
                             </div>
                             <p className="font-normal text-gray-400">{detail.shortDescription}</p>
                             <div className="card-actions justify-end">
