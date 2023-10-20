@@ -15,7 +15,7 @@ const Update = () => {
         const rating = form.rating.value;
         const image = form.image.value;
         const product = { productName, brandName, type, price, shortDescription, rating, image }
-        fetch(`http://localhost:5000/updateProduct/${updateData._id}`, {
+        fetch(`https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/updateProduct/${updateData._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

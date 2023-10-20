@@ -19,7 +19,7 @@ const MyCart = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/addToCart/myCart/${_id}`, {
+                fetch(`https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/addToCart/myCart/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

@@ -13,7 +13,7 @@ const AddProduct = () => {
         const rating = form.rating.value;
         const image = form.image.value;
         const product = { productName, brandName, type, price, shortDescription, rating, image }
-        fetch('http://localhost:5000/products', {
+        fetch('https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
