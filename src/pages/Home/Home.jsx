@@ -4,6 +4,7 @@ import CompanyJobs from "../../components/CompanyJobs/CompanyJobs";
 import LetsDrink from "../../components/LetsDrink/LetsDrink";
 
 const Home = () => {
+
     const brandData = useLoaderData();
     return (
         <div>

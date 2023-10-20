@@ -44,7 +44,7 @@ const MyCart = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className="bg-base-200">
+                        <tr className="bg-orange-200 text-black">
                             <th>Product Name</th>
                             <th>Brand Name</th>
                             <th>Product Type</th>
@@ -57,7 +57,8 @@ const MyCart = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            cardData.map(data => <tr key={data._id}>
+                            cardData.map(data => <tr className="bg-base-200"
+                             key={data._id}>
                                 <th>{data.productName}</th>
                                 <td>{data.brandName}</td>
                                 <td>{data.type}</td>
