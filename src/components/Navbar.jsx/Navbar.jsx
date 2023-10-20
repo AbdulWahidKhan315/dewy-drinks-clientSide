@@ -2,7 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Navbar = () => {
+
+    useEffect(()=>{
+        AOS.init({duration: "1000"})
+    },[])
 
     const [theme,setTheme]=useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
 
@@ -36,7 +43,7 @@ const Navbar = () => {
         <li><NavLink to="/register">Register</NavLink></li>
     </>
     return (
-        <div className="navbar bg-black text-white">
+        <div data-aos="fade-down" data-aos-duration="2000" className="navbar bg-black text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

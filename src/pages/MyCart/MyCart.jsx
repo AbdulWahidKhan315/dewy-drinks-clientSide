@@ -57,7 +57,7 @@ const MyCart = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            cardData.map(data => <tr className="bg-base-200"
+                            cardData.map(data => <tr className="bg-base-200 text-orange-500"
                              key={data._id}>
                                 <th>{data.productName}</th>
                                 <td>{data.brandName}</td>
