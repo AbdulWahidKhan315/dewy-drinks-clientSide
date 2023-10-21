@@ -12,7 +12,7 @@ const ProductDetails = () => {
     const handleAddToCart = (e) =>{
         e.preventDefault();
         const cart = {productName,brandName,type,price,image,Ingredients,rating,email}
-        fetch('https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/addToCart',{
+        fetch('https://dewy-drinks-server.vercel.app/addToCart',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

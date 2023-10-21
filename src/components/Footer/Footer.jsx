@@ -3,7 +3,7 @@ const Footer = () => {
         <div>
             <footer className="footer px-10 py-4 border-t bg-gradient-to-r from-orange-400 to-amber-200  text-black font-bold border-orange-800">
                 <aside className="items-center grid-flow-col">
-                    <p>DeWy-Drinks Industries Ltd. <br />Providing reliable tech since 1992</p>
+                    <p>The <span className="text-2xl font-extrabold">DeWy-Drinks</span> company Ltd. <br />Providing reliable service since 1992</p>
                 </aside>
                 <nav className="md:place-self-center md:justify-self-end">
                     <div className="grid grid-flow-col gap-4">
@@ -15,11 +15,11 @@ const Footer = () => {
             </footer>
             <footer className="footer p-10 bg-gradient-to-r from-orange-400 to-amber-200 text-black font-bold">
                 <nav>
-                    <header className="footer-title">Services</header>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <header className="footer-title">SHOP & VISIT</header>
+                    <a className="link link-hover">DeWy-Drinks Store Online</a>
+                    <a className="link link-hover">DeWy-Drinks Intl Store Online</a>
+                    <a className="link link-hover">DeWy-Drinks Store Atlanta</a>
+                    <a className="link link-hover">DeWy-Drinks Store Las Vegas</a>
                 </nav>
                 <nav>
                     <header className="footer-title">Company</header>

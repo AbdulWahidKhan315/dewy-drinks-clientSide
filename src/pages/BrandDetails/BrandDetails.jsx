@@ -75,7 +75,7 @@ const BrandDetails = () => {
                             </div>
                             <p className="font-normal text-gray-400">{detail.shortDescription}</p>
                             <div className="card-actions justify-end">
-                                <Link to={`/productDetails/${detail.productName}`}>
+                                <Link to={`/productDetails/${detail._id}`}>
                                     <button className="btn rounded-full bg-orange-700 border-none hover:bg-orange-900 text-white font-bold">Details</button>
                                 </Link>
                                 <Link to={`/updateProduct/${detail._id}`}>

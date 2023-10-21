@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-    const {createUserInFirebase} = useContext(AuthContext)
+    const { createUserInFirebase, user } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
@@ -18,49 +18,49 @@ const Register = () => {
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        createUserInFirebase(email,password)
-        .then(result => {
-            Swal.fire({
-                title: 'Success!',
-                text: 'Register Successfully',
-                icon: 'success',
-                confirmButtonText: 'Ok'
+        createUserInFirebase(email, password)
+            .then(result => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Register Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+                updateProfile(result.user, {
+                    displayName: name,
+                    photoURL: photo
+                })
+                    .then()
+                    .catch(error => {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: `${error.message}`,
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        })
+                    })
+                navigate('/');
             })
-            updateProfile(result.user, {
-                displayName: name,
-                photoURL: photo
-            })
-            .then()
             .catch(error => {
                 Swal.fire({
                     title: 'Error!',
                     text: `${error.message}`,
                     icon: 'error',
                     confirmButtonText: 'Cool'
-                  })
+                })
             })
-            navigate('/');
-        })
-        .catch(error => {
-            Swal.fire({
-                title: 'Error!',
-                text: `${error.message}`,
-                icon: 'error',
-                confirmButtonText: 'Cool'
-              })
-        })
     }
     return (
         <div>
             <div>
                 <div className="bg-base-200">
                     <div className="hero min-h-screen bg-base-200">
-                        <div className="hero-content flex-col lg:flex-row-reverse">
+                        <div className="flex flex-col lg:flex-row-reverse lg:gap-12 items-center">
                             <div className="text-center lg:text-left">
                                 <h1 className="text-5xl font-bold text-orange-400">Register now!</h1>
                                 <p className="py-6 font-semibold">Please register in our website. By completing the registration you will get the premium service from our website.</p>
                             </div>
-                            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-orange-400">
+                            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-orange-400 md:ml-36">
                                 <form className="card-body" onSubmit={handleRegister}>
                                     <div className="form-control">
                                         <label className="label">
@@ -93,7 +93,10 @@ const Register = () => {
                                         </label>
                                     </div>
                                     <div className="form-control mt-6">
-                                        <button className="btn bg-orange-500 hover:bg-orange-700 text-white">Register</button>
+                                        {
+                                            user ? <h1 className="text-3xl">Already logged in</h1>:
+                                            <button className="btn bg-orange-500 hover:bg-orange-700 text-white">Register</button>
+                                        }
                                         <p>Already have any accout? please <Link to="/login" className="font-bold text-blue-600">Login</Link></p>
                                     </div>
                                 </form>

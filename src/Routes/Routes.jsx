@@ -20,7 +20,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: ()=> fetch('https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/brands')
+                loader: ()=> fetch('https://dewy-drinks-server.vercel.app/brands')
             },
             {
                 path: '/register',
@@ -37,22 +37,22 @@ const router = createBrowserRouter([
             {
                 path: '/brandDetails/:name',
                 element: <BrandDetails></BrandDetails>,
-                loader: ({params}) => fetch(`https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/products/${params.name}`)
+                loader: ({params}) => fetch(`https://dewy-drinks-server.vercel.app/products/${params.name}`)
             },
             {
-                path: '/productDetails/:Pname',
+                path: '/productDetails/:Pid',
                 element: <PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>,
-                loader: ({params}) => fetch(`https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/products/productName/${params.Pname}`)
+                loader: ({params}) => fetch(`https://dewy-drinks-server.vercel.app/products/productName/${params.Pid}`)
             },
             {
                 path: '/myCart',
                 element: <PrivateRoutes><MyCart></MyCart></PrivateRoutes>,
-                loader: ()=> fetch("https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/myCart")
+                loader: ()=> fetch("https://dewy-drinks-server.vercel.app/myCart")
             },
             {
                 path: '/updateProduct/:id',
                 element: <PrivateRoutes><Update></Update></PrivateRoutes>,
-                loader: ({params})=> fetch(`https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/updateProduct/${params.id}`)
+                loader: ({params})=> fetch(`https://dewy-drinks-server.vercel.app/updateProduct/${params.id}`)
             }
         ]
     }

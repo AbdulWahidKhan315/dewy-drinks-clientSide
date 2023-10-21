@@ -8,6 +8,7 @@ const Login = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+    const {user}=useContext(AuthContext);
 
     const location = useLocation();
 
@@ -62,14 +63,17 @@ const Login = () => {
             <div>
                 <div className="bg-base-200">
                     <div className="hero min-h-screen bg-base-200">
-                        <div className="hero-content flex-col lg:flex-row-reverse">
+                        <div className="flex flex-col lg:flex-row-reverse lg:gap-12 items-center">
                             <div className="text-center lg:text-left">
                                 <h1 className="text-5xl font-bold text-orange-400">Login now!</h1>
                                 <p className="py-6 font-semibold">Please login in our website. By completing the registration you will get the premium service from our website.</p>
                                 <p className="text-2xl font-bold mb-3 text-orange-400">Login With google!</p>
-                                <button onClick={googleLogin} className="btn bg-orange-600 text-white">Google</button>
+                                {
+                                    user ? "":
+                                    <button onClick={googleLogin} className="btn bg-orange-600 text-white">Google</button>
+                                }
                             </div>
-                            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-orange-400">
+                            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-orange-400 md:ml-36">
                                 <form className="card-body" onSubmit={handleLogin}>
                                     <div className="form-control">
                                         <label className="label">
@@ -90,7 +94,11 @@ const Login = () => {
                                         </label>
                                     </div>
                                     <div className="form-control mt-6">
-                                        <button className="btn bg-orange-500 hover:bg-orange-700 text-white">Login</button>
+                                        {
+                                            user ? 
+                                            <h1 className="text-3xl font-bold">Already logged in</h1>:
+                                            <button className="btn bg-orange-500 hover:bg-orange-700 text-white">Login</button>
+                                        }
                                         <p>Do not have any accout? please <Link to="/register" className="font-bold text-blue-600">Register</Link></p>
                                     </div>
                                 </form>

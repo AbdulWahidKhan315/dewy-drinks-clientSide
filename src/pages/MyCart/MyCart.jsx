@@ -19,7 +19,7 @@ const MyCart = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://dewy-drinks-server-h1tsyl3le-wahids-projects.vercel.app/addToCart/myCart/${_id}`, {
+                fetch(`https://dewy-drinks-server.vercel.app/addToCart/myCart/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -41,10 +41,11 @@ const MyCart = () => {
     return (
         <div>
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="w-[800px] lg:w-full">
                     {/* head */}
                     <thead>
                         <tr className="bg-orange-200 text-black">
+                            <th>No.</th>
                             <th>Product Name</th>
                             <th>Brand Name</th>
                             <th>Product Type</th>
@@ -57,21 +58,22 @@ const MyCart = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            cardData.map(data => <tr className="bg-base-200 text-orange-500"
+                            cardData.map((data,index) => <tr className="bg-base-200 text-orange-500"
                              key={data._id}>
+                                <th>{index + 1}</th>
                                 <th>{data.productName}</th>
-                                <td>{data.brandName}</td>
-                                <td>{data.type}</td>
-                                <td>{data.price}</td>
-                                <td>{data.email}</td>
-                                <td>
+                                <th>{data.brandName}</th>
+                                <th>{data.type}</th>
+                                <th>{data.price}</th>
+                                <th>{data.email}</th>
+                                <th>
                                     <img className="w-16 h-16 rounded-full" src={data.image} alt="" />
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     <button
                                     onClick={() => handleDelete(data._id)}
                                      className="btn bg-orange-600 text-white font-bold hover:bg-orange-800">X</button>
-                                </td>
+                                </th>
                             </tr>)
                         }
                     </tbody>
